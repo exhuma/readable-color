@@ -1,5 +1,5 @@
 {
-  "name": "color-a11y",
+  "name": "@exhuma/color-a11y",
   "version": "1.0.0-alpha.1",
   "description": "Determine readable text-colors for a given backgrund",
   "main": "build/index.js",
