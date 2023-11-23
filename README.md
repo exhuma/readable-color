@@ -9,6 +9,8 @@ generated from other values.
 
 **Important**: See https://github.com/exhuma/readable-color/issues/1
 
+See demo at https://codepen.io/Michel-Albert/pen/eYxrXeG
+
 Example:
 
 ```javascript
