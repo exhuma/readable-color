@@ -1,5 +1,5 @@
 {
-  "name": "@exhuma/color-a11y",
+  "name": "@exhuma/readable-color",
   "version": "1.0.0-alpha.1",
   "description": "Determine readable text-colors for a given backgrund",
   "main": "build/index.js",
@@ -12,12 +12,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/exhuma/color-a11y"
+    "url": "https://github.com/exhuma/readable-color"
   },
   "bugs": {
-    "url": "https://github.com/exhuma/color-a11y/issues"
+    "url": "https://github.com/exhuma/readable-color/issues"
   },
-  "homepage": "https://github.com/exhuma/color-a11y",
+  "homepage": "https://github.com/exhuma/readable-color",
   "author": "Michel Albert",
   "license": "MIT",
   "devDependencies": {
