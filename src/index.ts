@@ -77,3 +77,5 @@ export function getReadableComplement(color: Color): Color {
 export function W3CColorDifference(a: Color, b: Color): number {
   return Math.abs(a.r - b.r) + Math.abs(a.g - b.g) + Math.abs(a.b - b.b);
 }
+
+export { Color };
