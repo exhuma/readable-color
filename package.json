@@ -2,17 +2,26 @@
   "name": "color-a11y",
   "version": "1.0.0",
   "description": "Determine readable text-colors for a given backgrund",
-  "main": "src/index.js",
+  "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && bun build src/index.ts --outdir build"
   },
   "keywords": [
     "color",
     "accessibility"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exhuma/color-a11y"
+  },
+  "bugs": {
+    "url": "https://github.com/exhuma/color-a11y/issues"
+  },
+  "homepage": "https://github.com/exhuma/color-a11y",
   "author": "Michel Albert",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.2",
+    "bun-types": "latest"
   }
 }
