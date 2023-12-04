@@ -30,7 +30,7 @@ export class Color {
    * @param hsl
    * @return
    */
-  static fromHSL(hsl: number[]): Color {
+  static fromHSL(hsl: [number, number, number]): Color {
     const rgb = hsl2rgb(hsl[0], hsl[1], hsl[2]);
     return new Color(rgb[0], rgb[1], rgb[2]);
   }
@@ -62,7 +62,7 @@ export class Color {
  * @return
  */
 export function getComplement(input: Color): Color {
-  let rgb: number[];
+  let rgb: [number, number, number];
   const hsl = rgb2hsl(input.r, input.g, input.b);
   let new_h = hsl[0] + 180;
   if (new_h >= 360) {
@@ -84,7 +84,7 @@ export function getComplement(input: Color): Color {
  * @param b Blue
  * @param hsl This array will be assigned the HSL values (3 ints)
  */
-export function rgb2hsl(r: number, g: number, b: number): number[] {
+export function rgb2hsl(r: number, g: number, b: number): [number, number, number] {
   const red = r / 255.0;
   const green = g / 255.0;
   const blue = b / 255.0;
@@ -139,7 +139,8 @@ export function rgb2hsl(r: number, g: number, b: number): number[] {
  * @param x
  * @param rgb This array will be assigned the RGB values (3 ints)
  */
-export function hsl2rgb(h: number, s: number, l: number): number[] {
+
+export function hsl2rgb(h: number, s: number, l: number): [number, number, number] {
   const hue = h / 360.0;
   const saturation = s / 100.0;
   const lightness = l / 100.0;
