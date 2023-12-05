@@ -21,16 +21,16 @@
     Sample Text
     </div>
    </div> 
-   <input type="range" name="red" id="HueSliderR" min="0" max="255"><br />
-   <input type="range" name="green" id="HueSliderG" min="0" max="255"><br />
-   <input type="range" name="blue" id="HueSliderB" min="0" max="255"><br />
-   <input type="button" id="ButtonAuto" value="Toggle Auto" />
+   <input type="range" name="red" id="SliderR" min="0" max="255"><br />
+   <input type="range" name="green" id="SliderG" min="0" max="255"><br />
+   <input type="range" name="blue" id="SliderB" min="0" max="255"><br />
+   <input type="button" id="ButtonAuto" value="Toggle Auto" />&nbsp;<span id="AutoState">Off</span>
     <script type="module">
         import { getReadableComplement } from '/build/index.js';
         import { Color } from "./build/cmath.js";
 
         var swatch = document.getElementById("Swatch");
-        var sliders = ["HueSliderR", "HueSliderG", "HueSliderB"];
+        var sliders = ["SliderR", "SliderG", "SliderB"];
 
         function setColor() {
             var rgb = sliders.map( name => {
@@ -59,14 +59,20 @@
         var autoButton = document.getElementById("ButtonAuto");
         autoButton.addEventListener("click", () => auto = !auto);
 
+        var autoState = document.getElementById("AutoState");
+
         window.setInterval(() => {
+            autoState.innerHTML = (auto ? "On" : "Off");
             if (!auto) {
                 return;
             }
             const rgb = [0, 0, 0].map(item => {
                 return Math.round(Math.random() * 255);
             })
-            var bgHex = rgb.map(value => {
+            var bgHex = rgb.map((value, index) => {
+                var sliderName = sliders[index];
+                var slider = document.getElementById(sliderName);
+                slider.value = value;
                 var hexval = Math.round(value).toString(16);
                 if (hexval.length < 2) {
                     hexval = `0${hexval}`
