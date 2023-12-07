@@ -45,7 +45,7 @@ npm run build
 To run a dev-server:
 
 ```bash
-npm run serve
+npm run dev
 ```
 
 Then access: http://localhost:5173/src/index.html
