@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Readable Colors</title>
+    <style>
+        #SliderGrid {
+            max-width: 300px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 10px;
+        }
+        #Swatch {
+            width: 300px;
+            height: 200px;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+   <div id="Swatch">
+    <div>
+    Sample Text
+    </div>
+   </div> 
+   <div id="SliderGrid">
+    <span>Red</span><input type="range" name="red" id="SliderR" min="0" max="255">
+    <span>Green</span><input type="range" name="green" id="SliderG" min="0" max="255">
+    <span>Blue</span><input type="range" name="blue" id="SliderB" min="0" max="255">
+    <span>Auto: <span id="AutoState">Off</span></span><input type="button" id="ButtonAuto" value="Toggle Auto" />
+    <span>Link Sliders (grayscale)</span><input type="checkbox" id="LinkSlidersToggle" value="off" />
+   </div>
+    <script type="module">
+        import { getReadableComplement } from './index';
+        import { Color } from './cmath';
+
+        var swatch = document.getElementById("Swatch");
+        var sliders = ["SliderR", "SliderG", "SliderB"];
+        var grayscale = false;
+
+        function setGrayscale(state) {
+            let lightness = document.getElementById(sliders[0]).value;
+            sliders.slice(1).map(name => {
+                let elmt = document.getElementById(name)
+                elmt.disabled = grayscale;
+                elmt.value = lightness;
+            });
+        }
+
+        function setColor() {
+            var rgb = sliders.map( name => {
+                var slider = document.getElementById(name);
+                return Number.parseInt(slider.value);
+            });
+            if (grayscale) {
+                rgb = [rgb[0], rgb[0], rgb[0]]
+                sliders.slice(1).map( name => {
+                    var slider = document.getElementById(name);
+                    slider.value = rgb[0];
+
+                });
+            }
+            var bgHex = rgb.map(value => {
+                var hexval = Math.round(value).toString(16);
+                if (hexval.length < 2) {
+                    hexval = `0${hexval}`
+                }
+                return hexval;
+            });
+            var color = new Color(...rgb);
+            var complement = getReadableComplement(color);
+            swatch.style.backgroundColor = `#${bgHex.join('')}`;
+            swatch.style.color = complement.toHex();
+        }
+
+        sliders.map( name => {
+            var slider = document.getElementById(name);
+            slider.addEventListener("input", setColor);
+        });
+
+        let auto = false;
+        var autoButton = document.getElementById("ButtonAuto");
+        autoButton.addEventListener("click", () => {
+            auto = !auto
+            if (auto) {
+                var linkSliders = document.getElementById("LinkSlidersToggle");
+                linkSliders.checked = false;
+            }
+        });
+
+        var autoState = document.getElementById("AutoState");
+
+        window.setInterval(() => {
+            autoState.innerHTML = (auto ? "On" : "Off");
+            if (!auto) {
+                return;
+            }
+            const rgb = [0, 0, 0].map(item => {
+                return Math.round(Math.random() * 255);
+            })
+            var bgHex = rgb.map((value, index) => {
+                var sliderName = sliders[index];
+                var slider = document.getElementById(sliderName);
+                slider.value = value;
+                var hexval = Math.round(value).toString(16);
+                if (hexval.length < 2) {
+                    hexval = `0${hexval}`
+                }
+                return hexval;
+            });
+            var complement = getReadableComplement(new Color(...rgb));
+            swatch.style.backgroundColor = `#${bgHex.join('')}`;
+            swatch.style.color = complement.toHex();
+        }, 1000);
+
+        var linkSliders = document.getElementById("LinkSlidersToggle");
+        linkSliders.addEventListener('input', event => {
+            grayscale = event.target.checked;
+            setGrayscale(grayscale);
+        })
+
+    </script>
+</body>
+</html>

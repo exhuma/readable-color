@@ -12,7 +12,9 @@
     }
   },
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "dev": "vite serve",
+    "test": "vitest --coverage"
   },
   "keywords": [
     "color",
