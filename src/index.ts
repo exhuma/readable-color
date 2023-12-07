@@ -3,7 +3,7 @@ import { Color, getComplement } from "./cmath";
 /**
  * Supported calculation algorithms
  */
-type Method = "W3C" | "Luminosity" | "LuminosityContrast";
+export type Method = "W3C" | "Luminosity" | "LuminosityContrast";
 
 /**
  * Determines whether two colors are considered readable if one of them is
@@ -47,13 +47,13 @@ export function isGoodColorMix(
  * @param color A color
  * @return the "best" complementary color
  */
-export function getReadableComplement(color: Color): Color {
+export function getReadableComplement(color: Color, method: Method = "LuminosityContrast"): Color {
   let complement = getComplement(color);
   const textHSL = complement.hsl();
   const lumin = color.luminosity();
 
   while (
-    !isGoodColorMix(color, complement, "LuminosityContrast") &&
+    !isGoodColorMix(color, complement, method) &&
     textHSL[2] < 100 &&
     textHSL[2] > 0
   ) {
