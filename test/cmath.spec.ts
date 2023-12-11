@@ -25,12 +25,6 @@ const colors: TColor[] = [
   })
 })
 
-// test('getComplement', () => {
-//   const result = new Color(255, 255, 255);
-//   const expected = new Color(0, 0, 0);
-//   expect(getComplement(result)).toEqual(expected);
-// })
-
 test('getComplement', () => {
   const result = new Color(10, 101, 200);
   const expected = new Color(199, 108, 10);
