@@ -69,12 +69,7 @@ export function getComplement(input: Color): Color {
     new_h -= 360;
   }
   rgb = hsl2rgb(new_h, hsl[1], hsl[2]);
-  try {
-    return new Color(rgb[0], rgb[1], rgb[2]);
-  } catch (error) {
-    console.error(error);
-    return new Color(0, 0, 0);
-  }
+  return new Color(rgb[0], rgb[1], rgb[2]);
 }
 
 /**
