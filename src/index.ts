@@ -50,7 +50,7 @@ export function isGoodColorMix(
 export function getReadableComplement(color: Color, method: Method = "LuminosityContrast"): Color {
   let complement = getComplement(color);
   const textHSL = complement.hsl();
-  const lumin = color.luminosity();
+  let lumin = complement.luminosity();
 
   while (
     !isGoodColorMix(color, complement, method) &&
