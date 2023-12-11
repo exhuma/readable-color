@@ -34,8 +34,8 @@ function test_grc(input: Color, expected: Color, method: Method = 'LuminosityCon
 }
 
 test_grc(new Color(10, 20, 30), new Color(223, 188, 155), 'W3C');
-test_grc(new Color(200, 200, 200), new Color(33, 33, 33), 'W3C');
+test_grc(new Color(200, 200, 200), new Color(255, 255, 255), 'W3C');
 test_grc(new Color(10, 20, 30), new Color(220, 182, 147), 'Luminosity');
-test_grc(new Color(200, 200, 200), new Color(20, 20, 20), 'Luminosity');
+test_grc(new Color(200, 200, 200), new Color(255, 255, 255), 'Luminosity');
 test_grc(new Color(10, 20, 30), new Color(218, 177, 139), 'LuminosityContrast');
-test_grc(new Color(200, 200, 200), new Color(36, 36, 36), 'LuminosityContrast');
+test_grc(new Color(200, 200, 200), new Color(255, 255, 255), 'LuminosityContrast');
