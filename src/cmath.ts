@@ -64,11 +64,22 @@ export class Color {
 export function getComplement(input: Color): Color {
   let rgb: [number, number, number];
   const hsl = rgb2hsl(input.r, input.g, input.b);
-  let new_h = hsl[0] + 180;
-  if (new_h >= 360) {
-    new_h -= 360;
+  let new_hsl;
+  if (input.r === input.g && input.g === input.b) {
+    // TODO: Verify that 50 is a good fit here (might not have enough contrast)
+    let new_l = hsl[2] + 50;
+    if (new_l >= 100) {
+      new_l -= 100;
+    }
+    new_hsl = [hsl[0], hsl[1], new_l];
+  } else {
+    let new_h = hsl[0] + 180;
+    if (new_h >= 360) {
+      new_h -= 360;
+    }
+    new_hsl = [new_h, hsl[1], hsl[2]];
   }
-  rgb = hsl2rgb(new_h, hsl[1], hsl[2]);
+  rgb = hsl2rgb(new_hsl[0], new_hsl[1], new_hsl[2]);
   return new Color(rgb[0], rgb[1], rgb[2]);
 }
 
