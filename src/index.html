@@ -6,9 +6,10 @@
     <title>Readable Colors</title>
     <style>
         #SliderGrid {
+            margin-top: 1em;
             max-width: 300px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 25px 25px 25px;
             row-gap: 10px;
         }
         #Swatch {
@@ -28,40 +29,68 @@
     </div>
    </div> 
    <div id="SliderGrid">
-    <span>Red</span><input type="range" name="red" id="SliderR" min="0" max="255">
-    <span>Green</span><input type="range" name="green" id="SliderG" min="0" max="255">
-    <span>Blue</span><input type="range" name="blue" id="SliderB" min="0" max="255">
-    <span>Auto: <span id="AutoState">Off</span></span><input type="button" id="ButtonAuto" value="Toggle Auto" />
-    <span>Link Sliders (grayscale)</span><input type="checkbox" id="LinkSlidersToggle" value="off" />
+    <span>Red</span><input type="range" name="red" id="SliderRed" min="0" max="255">
+    <button id="SubRed">-</button>
+    <button id="AddRed">+</button>
+    <span id="RedValue"></span>
+    <span>Green</span><input type="range" name="green" id="SliderGreen" min="0" max="255">
+    <button id="SubGreen">-</button>
+    <button id="AddGreen">+</button>
+    <span id="GreenValue"></span>
+    <span>Blue</span><input type="range" name="blue" id="SliderBlue" min="0" max="255">
+    <button id="SubBlue">-</button>
+    <button id="AddBlue">+</button>
+    <span id="BlueValue"></span>
+    <span>Auto: <span id="AutoState">Off</span></span><input style="grid-column-start: span 4;" type="button" id="ButtonAuto" value="Toggle Auto" />
+    <span>Grayscale</span><input style="grid-column-start: span 4;" type="checkbox" id="LinkSlidersToggle" value="off" />
+    <span></span><span></span><span></span>
    </div>
     <script type="module">
         import { getReadableComplement } from './index';
         import { Color } from './cmath';
 
         var swatch = document.getElementById("Swatch");
-        var sliders = ["SliderR", "SliderG", "SliderB"];
+        var elementIdNames = ["Red", "Green", "Blue"];
         var grayscale = false;
 
         function setGrayscale(state) {
-            let lightness = document.getElementById(sliders[0]).value;
-            sliders.slice(1).map(name => {
-                let elmt = document.getElementById(name)
+            let lightness = document.getElementById(`Slider${elementIdNames[0]}`).value;
+            elementIdNames.slice(1).map(name => {
+                let elmt = document.getElementById(`Slider${name}`)
                 elmt.disabled = grayscale;
                 elmt.value = lightness;
+                document.getElementById(`Sub${name}`).disabled = grayscale;
+                document.getElementById(`Add${name}`).disabled = grayscale;
             });
         }
 
+        function incrementor(name) {
+            return () => {
+                const slider = document.getElementById(`Slider${name}`);
+                slider.value = Number.parseInt(slider.value) + 1;
+                setColor();
+            }
+        }
+        function decrementor(name) {
+            return () => {
+                const slider = document.getElementById(`Slider${name}`);
+                slider.value = Number.parseInt(slider.value) - 1;
+                setColor();
+            }
+        }
+
         function setColor() {
-            var rgb = sliders.map( name => {
-                var slider = document.getElementById(name);
-                return Number.parseInt(slider.value);
+            var rgb = elementIdNames.map( name => {
+                var slider = document.getElementById(`Slider${name}`);
+                const value = Number.parseInt(slider.value);
+                document.getElementById(`${name}Value`).innerHTML = `${value}`;
+                return value;
             });
             if (grayscale) {
                 rgb = [rgb[0], rgb[0], rgb[0]]
-                sliders.slice(1).map( name => {
-                    var slider = document.getElementById(name);
+                elementIdNames.map( name => {
+                    var slider = document.getElementById(`Slider${name}`);
                     slider.value = rgb[0];
-
                 });
             }
             var bgHex = rgb.map(value => {
@@ -72,14 +101,21 @@
                 return hexval;
             });
             var color = new Color(...rgb);
-            var complement = getReadableComplement(color);
+            var complement = getReadableComplement(color, "Luminosity");
             swatch.style.backgroundColor = `#${bgHex.join('')}`;
             swatch.style.color = complement.toHex();
         }
 
-        sliders.map( name => {
-            var slider = document.getElementById(name);
-            slider.addEventListener("input", setColor);
+        elementIdNames.map( name => {
+            document.getElementById(`Slider${name}`).addEventListener(
+                "input", setColor
+            );
+            document.getElementById(`Sub${name}`).addEventListener(
+                "click", decrementor(name)
+            );
+            document.getElementById(`Add${name}`).addEventListener(
+                "click", incrementor(name)
+            );
         });
 
         let auto = false;
@@ -103,7 +139,7 @@
                 return Math.round(Math.random() * 255);
             })
             var bgHex = rgb.map((value, index) => {
-                var sliderName = sliders[index];
+                var sliderName = `Slider${elementIdNames[index]}`;
                 var slider = document.getElementById(sliderName);
                 slider.value = value;
                 var hexval = Math.round(value).toString(16);
@@ -112,7 +148,7 @@
                 }
                 return hexval;
             });
-            var complement = getReadableComplement(new Color(...rgb));
+            var complement = getReadableComplement(new Color(...rgb), "Luminosity");
             swatch.style.backgroundColor = `#${bgHex.join('')}`;
             swatch.style.color = complement.toHex();
         }, 1000);
@@ -122,6 +158,8 @@
             grayscale = event.target.checked;
             setGrayscale(grayscale);
         })
+
+        setColor()
 
     </script>
 </body>
