@@ -52,7 +52,10 @@ export class Color {
    * @return
    */
   luminosity() {
-    return 0.2126 * this.r + 0.7152 * this.g + 0.0722 * this.b;
+    const rn = this.r/255;
+    const gn = this.g/255;
+    const bn = this.b/255;
+    return 0.2126 * Math.pow(rn, 2.2) + 0.7152 * Math.pow(gn, 2.2) + 0.0722 * Math.pow(bn, 2.2);
   }
 }
 
