@@ -14,7 +14,7 @@ export type Method = "W3C" | "Luminosity" | "LuminosityContrast";
 export function getReadableComplement(color: Color, method: Method = "LuminosityContrast"): Color {
   const backgroundLuminosity = color.luminosity();
   let output = color;
-  const minContrast = 0.3;
+  const minContrast = 0.65;
   let modifier = (color: Color) => {
     return new Color(
       Math.max(0, Math.round(color.r * 0.8)),
@@ -23,7 +23,7 @@ export function getReadableComplement(color: Color, method: Method = "Luminosity
     )
   };
 
-  if (backgroundLuminosity < 0.5) {
+  if (backgroundLuminosity < 0.43) {
     modifier = (color: Color) => {
       return new Color(
         Math.min(255, Math.round(color.r * 1.2)),
