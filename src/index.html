@@ -7,7 +7,7 @@
     <style>
         #SliderGrid {
             margin-top: 1em;
-            max-width: 300px;
+            max-width: 500px;
             display: grid;
             grid-template-columns: 1fr 1fr 25px 25px 25px;
             row-gap: 10px;
@@ -29,6 +29,9 @@
     </div>
    </div> 
    <div id="SliderGrid">
+    <span>BG Luminance</span><span id="BGLuminance" style="grid-column-start: span 4;">-</span>
+    <span>FG Luminance</span><span id="FGLuminance" style="grid-column-start: span 4;">-</span>
+    <span>Luminance Diff</span><span id="LuminanceDiff" style="grid-column-start: span 4;">-</span>
     <span>Red</span><input type="range" name="red" id="SliderRed" min="0" max="255">
     <button id="SubRed">-</button>
     <button id="AddRed">+</button>
@@ -100,10 +103,15 @@
                 }
                 return hexval;
             });
-            var color = new Color(...rgb);
-            var complement = getReadableComplement(color, "Luminosity");
+            var bgColor = new Color(...rgb);
+            var fgColor = getReadableComplement(bgColor, "Luminosity");
             swatch.style.backgroundColor = `#${bgHex.join('')}`;
-            swatch.style.color = complement.toHex();
+            swatch.style.color = fgColor.toHex();
+            document.getElementById("BGLuminance").innerHTML = bgColor.luminosity().toFixed(4);
+            document.getElementById("FGLuminance").innerHTML = fgColor.luminosity().toFixed(4);
+            document.getElementById("LuminanceDiff").innerHTML = Math.abs(
+                fgColor.luminosity() - bgColor.luminosity()
+            ).toFixed(4);
         }
 
         elementIdNames.map( name => {
