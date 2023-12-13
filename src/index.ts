@@ -33,21 +33,15 @@ export function getReadableComplement(color: Color, method: Method = "Luminosity
     };
   }
   output = modifier(color);
+  // Prevent endless loops for colors where the conditions cannot be met and the
+  // contrast will always be below the minimum contrast using a max-number of
+  // iterations.
   let iterations = 0;
   while (Math.abs(backgroundLuminosity - output.luminosity()) < minContrast && iterations < 50 ) {
     output = modifier(output);
     iterations += 1;
   }
-  console.log(
-    iterations,
-    color,
-    output,
-    output.toHex(),
-    Math.abs(backgroundLuminosity - output.luminosity()).toFixed(3),
-    Math.abs(backgroundLuminosity - output.luminosity()) < minContrast
-  );
   return output;
-
 }
 
 export { Color };
