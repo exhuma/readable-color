@@ -50,31 +50,22 @@ export function isGoodColorMix(
 export function getReadableComplement(color: Color, method: Method = "LuminosityContrast"): Color {
   const backgroundLuminosity = color.luminosity();
   let output = color;
-  const minContrast = 0.65;
-  let modifier = (color: Color) => {
-    return new Color(
-      Math.max(0, Math.round(color.r * 0.8)),
-      Math.max(0, Math.round(color.g * 0.8)),
-      Math.max(0, Math.round(color.b * 0.8)),
-    )
-  };
-
+  let [h, s, l] = color.hsl();
+  // lightness must be at least 1 for the multipliers to work in the modifier
+  l = Math.max(1, l);
+  let modifier = (value: number) => Math.max(0, value * 0.8);
   if (backgroundLuminosity < 0.43) {
-    modifier = (color: Color) => {
-      return new Color(
-        Math.min(255, Math.round(color.r * 1.2)),
-        Math.min(255, Math.round(color.g * 1.2)),
-        Math.min(255, Math.round(color.b * 1.2)),
-      )
-    };
+    modifier = (value: number) => Math.min(100, value * 1.2);
   }
-  output = modifier(color);
+  l = modifier(l);
+  output = Color.fromHSL([h, s, l]);
   // Prevent endless loops for colors where the conditions cannot be met and the
   // contrast will always be below the minimum contrast using a max-number of
   // iterations.
   let iterations = 0;
-  while (Math.abs(backgroundLuminosity - output.luminosity()) < minContrast && iterations < 50 ) {
-    output = modifier(output);
+  while (!isGoodColorMix(color, output, method) && iterations < 50 ) {
+    l = modifier(l);
+    output = Color.fromHSL([h, s, l]);
     iterations += 1;
   }
   return output;
