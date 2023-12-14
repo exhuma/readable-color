@@ -75,9 +75,8 @@
     efficitur commodo. Nunc porta justo metus, a dignissim neque maximus eget. 
     </p>
    <div id="SliderGrid">
-    <span>BG Luminance</span><span id="BGLuminance" style="grid-column-start: span 4;">-</span>
-    <span>FG Luminance</span><span id="FGLuminance" style="grid-column-start: span 4;">-</span>
-    <span>Luminance Diff</span><span id="LuminanceDiff" style="grid-column-start: span 4;">-</span>
+    <span>Background Color</span><tt id="BGColor" style="grid-column-start: span 4;">-</tt>
+    <span>Text Color</span><tt id="FGColor" style="grid-column-start: span 4;">-</tt>
     <span>Red</span><input type="range" name="red" id="SliderRed" min="0" max="255">
     <button id="SubRed">-</button>
     <button id="AddRed">+</button>
@@ -90,6 +89,9 @@
     <button id="SubBlue">-</button>
     <button id="AddBlue">+</button>
     <span id="BlueValue"></span>
+    <span>BG Luminance</span><span id="BGLuminance" style="grid-column-start: span 4;">-</span>
+    <span>FG Luminance</span><span id="FGLuminance" style="grid-column-start: span 4;">-</span>
+    <span>Luminance Diff</span><span id="LuminanceDiff" style="grid-column-start: span 4;">-</span>
     <span>Auto: <span id="AutoState">Off</span></span><input style="grid-column-start: span 4;" type="button" id="ButtonAuto" value="Toggle Auto" />
     <span>Grayscale</span><input style="grid-column-start: span 4;" type="checkbox" id="LinkSlidersToggle" value="off" />
     <span></span><span></span><span></span>
@@ -155,6 +157,8 @@
             swatch.style.color = fgColor.toHex();
             document.getElementById("BGLuminance").innerHTML = bgColor.luminosity().toFixed(4);
             document.getElementById("FGLuminance").innerHTML = fgColor.luminosity().toFixed(4);
+            document.getElementById("BGColor").innerHTML = bgColor.toHex();
+            document.getElementById("FGColor").innerHTML = fgColor.toHex();
             document.getElementById("LuminanceDiff").innerHTML = Math.abs(
                 fgColor.luminosity() - bgColor.luminosity()
             ).toFixed(4);
