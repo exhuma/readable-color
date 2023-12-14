@@ -88,7 +88,12 @@ export function getReadableComplement(color: Color, method: Method = "Luminosity
  * @return
  */
 export function W3CColorDifference(a: Color, b: Color): number {
-  return Math.abs(a.r - b.r) + Math.abs(a.g - b.g) + Math.abs(a.b - b.b);
+  let output = (
+    Math.max(a.r, b.r) - Math.min(a.r, b.r)
+    + (Math.max(a.g, b.g) - Math.min(a.g, b.g))
+    + (Math.max(a.b, b.b) - Math.min(a.b, b.b))
+  );
+  return output
 }
 
 export { Color };
