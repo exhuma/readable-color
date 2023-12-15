@@ -17,7 +17,7 @@ export type Method = "W3C" | "Luminosity" | "LuminosityContrast";
 export function isGoodColorMix(
   color_a: Color,
   color_b: Color,
-  method: Method
+  method: Method,
 ): boolean {
   let lum_a;
   let lum_b;
@@ -47,7 +47,10 @@ export function isGoodColorMix(
  * @param color A color
  * @return the "best" complementary color
  */
-export function getReadableComplement(color: Color, method: Method = "LuminosityContrast"): Color {
+export function getReadableComplement(
+  color: Color,
+  method: Method = "LuminosityContrast",
+): Color {
   const backgroundLuminosity = color.luminosity();
   let output = color;
   let [h, s, l] = color.hsl();
@@ -63,7 +66,7 @@ export function getReadableComplement(color: Color, method: Method = "Luminosity
   // contrast will always be below the minimum contrast using a max-number of
   // iterations.
   let iterations = 0;
-  while (!isGoodColorMix(color, output, method) && iterations < 50 ) {
+  while (!isGoodColorMix(color, output, method) && iterations < 50) {
     l = modifier(l);
     output = Color.fromHSL([h, s, l]);
     iterations += 1;
@@ -79,12 +82,12 @@ export function getReadableComplement(color: Color, method: Method = "Luminosity
  * @return
  */
 export function W3CColorDifference(a: Color, b: Color): number {
-  let output = (
-    Math.max(a.r, b.r) - Math.min(a.r, b.r)
-    + (Math.max(a.g, b.g) - Math.min(a.g, b.g))
-    + (Math.max(a.b, b.b) - Math.min(a.b, b.b))
-  );
-  return output
+  let output =
+    Math.max(a.r, b.r) -
+    Math.min(a.r, b.r) +
+    (Math.max(a.g, b.g) - Math.min(a.g, b.g)) +
+    (Math.max(a.b, b.b) - Math.min(a.b, b.b));
+  return output;
 }
 
 export { Color };

@@ -1,7 +1,9 @@
 {
   "name": "@exhuma/readable-color",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "version": "1.0.0-alpha.3",
   "description": "Determine readable text-colors for a given backgrund",
   "main": "dist/readable-color.js",
@@ -32,6 +34,7 @@
   "license": "MIT",
   "devDependencies": {
     "@vitest/coverage-v8": "^0.34.6",
+    "prettier": "^3.1.1",
     "typescript": "^5.3.2",
     "vite": "^5.0.2",
     "vitest": "^0.34.6"

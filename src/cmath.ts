@@ -52,10 +52,14 @@ export class Color {
    * @return
    */
   luminosity() {
-    const rn = this.r/255;
-    const gn = this.g/255;
-    const bn = this.b/255;
-    return 0.2126 * Math.pow(rn, 2.2) + 0.7152 * Math.pow(gn, 2.2) + 0.0722 * Math.pow(bn, 2.2);
+    const rn = this.r / 255;
+    const gn = this.g / 255;
+    const bn = this.b / 255;
+    return (
+      0.2126 * Math.pow(rn, 2.2) +
+      0.7152 * Math.pow(gn, 2.2) +
+      0.0722 * Math.pow(bn, 2.2)
+    );
   }
 }
 
@@ -93,7 +97,11 @@ export function getComplement(input: Color): Color {
  * @param b Blue
  * @param hsl This array will be assigned the HSL values (3 ints)
  */
-export function rgb2hsl(r: number, g: number, b: number): [number, number, number] {
+export function rgb2hsl(
+  r: number,
+  g: number,
+  b: number,
+): [number, number, number] {
   const red = r / 255.0;
   const green = g / 255.0;
   const blue = b / 255.0;
@@ -149,7 +157,11 @@ export function rgb2hsl(r: number, g: number, b: number): [number, number, numbe
  * @param rgb This array will be assigned the RGB values (3 ints)
  */
 
-export function hsl2rgb(h: number, s: number, l: number): [number, number, number] {
+export function hsl2rgb(
+  h: number,
+  s: number,
+  l: number,
+): [number, number, number] {
   const hue = h / 360.0;
   const saturation = s / 100.0;
   const lightness = l / 100.0;

@@ -1,224 +1,250 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Readable Colors</title>
     <style>
-        #SliderGrid {
-            max-width: 500px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 25px 25px 25px;
-            row-gap: 10px;
-            position: fixed;
-            top: 0px;
-            right: 0px;
-            padding: 10px;
-            border-left: 2px solid black;
-            border-bottom: 2px solid black;
-            color: #000;
-            background-color: #fff;
-        }
+      #SliderGrid {
+        max-width: 500px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 25px 25px 25px;
+        row-gap: 10px;
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        padding: 10px;
+        border-left: 2px solid black;
+        border-bottom: 2px solid black;
+        color: #000;
+        background-color: #fff;
+      }
     </style>
-</head>
-<body id="Swatch">
+  </head>
+  <body id="Swatch">
     <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc volutpat
-    fringilla purus, in gravida ligula condimentum eu. Interdum et malesuada
-    fames ac ante ipsum primis in faucibus. Integer maximus massa ante, quis
-    rutrum nisi egestas eu. Fusce quis sapien et lorem molestie finibus. Ut
-    bibendum molestie pharetra. Sed quis dolor id libero eleifend ullamcorper.
-    Morbi sed elit justo. Aliquam a aliquet turpis. Duis mollis tellus est, vel
-    tincidunt lorem hendrerit ultricies. Quisque tempus est vitae odio malesuada
-    posuere vel sit amet metus. Integer in eros id velit consequat congue
-    venenatis id neque.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc volutpat
+      fringilla purus, in gravida ligula condimentum eu. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Integer maximus massa ante, quis
+      rutrum nisi egestas eu. Fusce quis sapien et lorem molestie finibus. Ut
+      bibendum molestie pharetra. Sed quis dolor id libero eleifend ullamcorper.
+      Morbi sed elit justo. Aliquam a aliquet turpis. Duis mollis tellus est,
+      vel tincidunt lorem hendrerit ultricies. Quisque tempus est vitae odio
+      malesuada posuere vel sit amet metus. Integer in eros id velit consequat
+      congue venenatis id neque.
     </p>
     <p>
-    Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-    ac turpis egestas. Nam eu cursus massa, id facilisis tortor. Phasellus nisl
-    nisi, consectetur in rhoncus nec, malesuada eget justo. Maecenas tempus
-    condimentum mi vitae varius. Aliquam laoreet velit non consectetur
-    porttitor. In condimentum ultrices cursus. Mauris et ultricies massa.
+      Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+      ac turpis egestas. Nam eu cursus massa, id facilisis tortor. Phasellus
+      nisl nisi, consectetur in rhoncus nec, malesuada eget justo. Maecenas
+      tempus condimentum mi vitae varius. Aliquam laoreet velit non consectetur
+      porttitor. In condimentum ultrices cursus. Mauris et ultricies massa.
     </p>
     <p>
-    Nullam vel egestas ligula, vel semper elit. Vivamus erat nisi, molestie id
-    quam sit amet, mollis pellentesque neque. Pellentesque iaculis, tellus a
-    iaculis posuere, magna neque feugiat tortor, in congue lacus nunc id orci.
-    Sed ut leo ac nisl semper condimentum ut a metus. Aliquam quis lorem nec
-    enim convallis convallis. Cras mollis dui interdum augue ornare semper.
-    Integer id accumsan mi. In vulputate tortor nunc, nec eleifend odio
-    ultricies at. Fusce scelerisque turpis enim, nec condimentum quam tristique
-    a. Nulla egestas justo vel quam ultricies, ac ultricies elit malesuada. Duis
-    vestibulum venenatis orci, congue sodales ex vestibulum ac. Nullam odio
-    enim, iaculis vitae maximus vel, condimentum vel turpis. Vestibulum augue
-    turpis, pulvinar non interdum in, venenatis et odio. Nulla pharetra dapibus
-    metus, nec molestie lorem lobortis a. Duis sagittis iaculis est, vel rhoncus
-    neque maximus id. Quisque auctor neque eu lectus porttitor vestibulum.
+      Nullam vel egestas ligula, vel semper elit. Vivamus erat nisi, molestie id
+      quam sit amet, mollis pellentesque neque. Pellentesque iaculis, tellus a
+      iaculis posuere, magna neque feugiat tortor, in congue lacus nunc id orci.
+      Sed ut leo ac nisl semper condimentum ut a metus. Aliquam quis lorem nec
+      enim convallis convallis. Cras mollis dui interdum augue ornare semper.
+      Integer id accumsan mi. In vulputate tortor nunc, nec eleifend odio
+      ultricies at. Fusce scelerisque turpis enim, nec condimentum quam
+      tristique a. Nulla egestas justo vel quam ultricies, ac ultricies elit
+      malesuada. Duis vestibulum venenatis orci, congue sodales ex vestibulum
+      ac. Nullam odio enim, iaculis vitae maximus vel, condimentum vel turpis.
+      Vestibulum augue turpis, pulvinar non interdum in, venenatis et odio.
+      Nulla pharetra dapibus metus, nec molestie lorem lobortis a. Duis sagittis
+      iaculis est, vel rhoncus neque maximus id. Quisque auctor neque eu lectus
+      porttitor vestibulum.
     </p>
     <p>
-    Phasellus non erat eu justo lacinia vulputate. Duis eu ornare felis.
-    Suspendisse et ex nisi. Proin odio turpis, porta a est ac, tincidunt
-    vestibulum ante. Quisque arcu nisl, condimentum a augue ac, vulputate cursus
-    dolor. Sed vel lacus quis turpis lacinia venenatis. Donec ornare sit amet
-    diam non ultricies. Interdum et malesuada fames ac ante ipsum primis in
-    faucibus. Class aptent taciti sociosqu ad litora torquent per conubia
-    nostra, per inceptos himenaeos. Curabitur porta, sapien ut luctus ultrices,
-    elit risus faucibus nisl, vel vulputate sem libero sed orci. Maecenas ac
-    odio ante.
+      Phasellus non erat eu justo lacinia vulputate. Duis eu ornare felis.
+      Suspendisse et ex nisi. Proin odio turpis, porta a est ac, tincidunt
+      vestibulum ante. Quisque arcu nisl, condimentum a augue ac, vulputate
+      cursus dolor. Sed vel lacus quis turpis lacinia venenatis. Donec ornare
+      sit amet diam non ultricies. Interdum et malesuada fames ac ante ipsum
+      primis in faucibus. Class aptent taciti sociosqu ad litora torquent per
+      conubia nostra, per inceptos himenaeos. Curabitur porta, sapien ut luctus
+      ultrices, elit risus faucibus nisl, vel vulputate sem libero sed orci.
+      Maecenas ac odio ante.
     </p>
     <p>
-    Proin faucibus nisl id metus sagittis tristique. Suspendisse nisi lorem,
-    vestibulum et justo non, pharetra imperdiet est. Cras suscipit, dui in
-    consequat aliquam, erat sapien varius elit, at elementum velit ligula sed
-    sem. In tristique et tortor a viverra. In a justo nulla. Etiam eu massa
-    blandit, vehicula dolor quis, tincidunt mi. Donec placerat pellentesque dui
-    efficitur commodo. Nunc porta justo metus, a dignissim neque maximus eget. 
+      Proin faucibus nisl id metus sagittis tristique. Suspendisse nisi lorem,
+      vestibulum et justo non, pharetra imperdiet est. Cras suscipit, dui in
+      consequat aliquam, erat sapien varius elit, at elementum velit ligula sed
+      sem. In tristique et tortor a viverra. In a justo nulla. Etiam eu massa
+      blandit, vehicula dolor quis, tincidunt mi. Donec placerat pellentesque
+      dui efficitur commodo. Nunc porta justo metus, a dignissim neque maximus
+      eget.
     </p>
-   <div id="SliderGrid">
-    <span>Background Color</span><tt id="BGColor" style="grid-column-start: span 4;">-</tt>
-    <span>Text Color</span><tt id="FGColor" style="grid-column-start: span 4;">-</tt>
-    <span>Red</span><input type="range" name="red" id="SliderRed" min="0" max="255">
-    <button id="SubRed">-</button>
-    <button id="AddRed">+</button>
-    <span id="RedValue"></span>
-    <span>Green</span><input type="range" name="green" id="SliderGreen" min="0" max="255">
-    <button id="SubGreen">-</button>
-    <button id="AddGreen">+</button>
-    <span id="GreenValue"></span>
-    <span>Blue</span><input type="range" name="blue" id="SliderBlue" min="0" max="255">
-    <button id="SubBlue">-</button>
-    <button id="AddBlue">+</button>
-    <span id="BlueValue"></span>
-    <span>BG Luminance</span><span id="BGLuminance" style="grid-column-start: span 4;">-</span>
-    <span>FG Luminance</span><span id="FGLuminance" style="grid-column-start: span 4;">-</span>
-    <span>Luminance Diff</span><span id="LuminanceDiff" style="grid-column-start: span 4;">-</span>
-    <span>Auto: <span id="AutoState">Off</span></span><input style="grid-column-start: span 4;" type="button" id="ButtonAuto" value="Toggle Auto" />
-    <span>Grayscale</span><input style="grid-column-start: span 4;" type="checkbox" id="LinkSlidersToggle" value="off" />
-    <span></span><span></span><span></span>
-   </div>
+    <div id="SliderGrid">
+      <span>Background Color</span
+      ><tt id="BGColor" style="grid-column-start: span 4">-</tt>
+      <span>Text Color</span
+      ><tt id="FGColor" style="grid-column-start: span 4">-</tt> <span>Red</span
+      ><input type="range" name="red" id="SliderRed" min="0" max="255" />
+      <button id="SubRed">-</button>
+      <button id="AddRed">+</button>
+      <span id="RedValue"></span>
+      <span>Green</span
+      ><input type="range" name="green" id="SliderGreen" min="0" max="255" />
+      <button id="SubGreen">-</button>
+      <button id="AddGreen">+</button>
+      <span id="GreenValue"></span>
+      <span>Blue</span
+      ><input type="range" name="blue" id="SliderBlue" min="0" max="255" />
+      <button id="SubBlue">-</button>
+      <button id="AddBlue">+</button>
+      <span id="BlueValue"></span>
+      <span>BG Luminance</span
+      ><span id="BGLuminance" style="grid-column-start: span 4">-</span>
+      <span>FG Luminance</span
+      ><span id="FGLuminance" style="grid-column-start: span 4">-</span>
+      <span>Luminance Diff</span
+      ><span id="LuminanceDiff" style="grid-column-start: span 4">-</span>
+      <span>Auto: <span id="AutoState">Off</span></span
+      ><input
+        style="grid-column-start: span 4"
+        type="button"
+        id="ButtonAuto"
+        value="Toggle Auto"
+      />
+      <span>Grayscale</span
+      ><input
+        style="grid-column-start: span 4"
+        type="checkbox"
+        id="LinkSlidersToggle"
+        value="off"
+      />
+      <span></span><span></span><span></span>
+    </div>
     <script type="module">
-        import { getReadableComplement } from './index';
-        import { Color } from './cmath';
+      import { getReadableComplement } from "./index";
+      import { Color } from "./cmath";
 
-        var swatch = document.getElementById("Swatch");
-        var elementIdNames = ["Red", "Green", "Blue"];
-        var grayscale = false;
+      var swatch = document.getElementById("Swatch");
+      var elementIdNames = ["Red", "Green", "Blue"];
+      var grayscale = false;
 
-        function setGrayscale(state) {
-            let lightness = document.getElementById(`Slider${elementIdNames[0]}`).value;
-            elementIdNames.slice(1).map(name => {
-                let elmt = document.getElementById(`Slider${name}`)
-                elmt.disabled = grayscale;
-                elmt.value = lightness;
-                document.getElementById(`Sub${name}`).disabled = grayscale;
-                document.getElementById(`Add${name}`).disabled = grayscale;
-            });
-        }
-
-        function incrementor(name) {
-            return () => {
-                const slider = document.getElementById(`Slider${name}`);
-                slider.value = Number.parseInt(slider.value) + 1;
-                setColor();
-            }
-        }
-        function decrementor(name) {
-            return () => {
-                const slider = document.getElementById(`Slider${name}`);
-                slider.value = Number.parseInt(slider.value) - 1;
-                setColor();
-            }
-        }
-
-        function setColor() {
-            var rgb = elementIdNames.map( name => {
-                var slider = document.getElementById(`Slider${name}`);
-                const value = Number.parseInt(slider.value);
-                document.getElementById(`${name}Value`).innerHTML = `${value}`;
-                return value;
-            });
-            if (grayscale) {
-                rgb = [rgb[0], rgb[0], rgb[0]]
-                elementIdNames.map( name => {
-                    var slider = document.getElementById(`Slider${name}`);
-                    slider.value = rgb[0];
-                });
-            }
-            var bgHex = rgb.map(value => {
-                var hexval = Math.round(value).toString(16);
-                if (hexval.length < 2) {
-                    hexval = `0${hexval}`
-                }
-                return hexval;
-            });
-            var bgColor = new Color(...rgb);
-            var fgColor = getReadableComplement(bgColor, "Luminosity");
-            swatch.style.backgroundColor = `#${bgHex.join('')}`;
-            swatch.style.color = fgColor.toHex();
-            document.getElementById("BGLuminance").innerHTML = bgColor.luminosity().toFixed(4);
-            document.getElementById("FGLuminance").innerHTML = fgColor.luminosity().toFixed(4);
-            document.getElementById("BGColor").innerHTML = bgColor.toHex();
-            document.getElementById("FGColor").innerHTML = fgColor.toHex();
-            document.getElementById("LuminanceDiff").innerHTML = Math.abs(
-                fgColor.luminosity() - bgColor.luminosity()
-            ).toFixed(4);
-        }
-
-        elementIdNames.map( name => {
-            document.getElementById(`Slider${name}`).addEventListener(
-                "input", setColor
-            );
-            document.getElementById(`Sub${name}`).addEventListener(
-                "click", decrementor(name)
-            );
-            document.getElementById(`Add${name}`).addEventListener(
-                "click", incrementor(name)
-            );
+      function setGrayscale(state) {
+        let lightness = document.getElementById(
+          `Slider${elementIdNames[0]}`,
+        ).value;
+        elementIdNames.slice(1).map((name) => {
+          let elmt = document.getElementById(`Slider${name}`);
+          elmt.disabled = grayscale;
+          elmt.value = lightness;
+          document.getElementById(`Sub${name}`).disabled = grayscale;
+          document.getElementById(`Add${name}`).disabled = grayscale;
         });
+      }
 
-        let auto = false;
-        var autoButton = document.getElementById("ButtonAuto");
-        autoButton.addEventListener("click", () => {
-            auto = !auto
-            if (auto) {
-                var linkSliders = document.getElementById("LinkSlidersToggle");
-                linkSliders.checked = false;
-            }
+      function incrementor(name) {
+        return () => {
+          const slider = document.getElementById(`Slider${name}`);
+          slider.value = Number.parseInt(slider.value) + 1;
+          setColor();
+        };
+      }
+      function decrementor(name) {
+        return () => {
+          const slider = document.getElementById(`Slider${name}`);
+          slider.value = Number.parseInt(slider.value) - 1;
+          setColor();
+        };
+      }
+
+      function setColor() {
+        var rgb = elementIdNames.map((name) => {
+          var slider = document.getElementById(`Slider${name}`);
+          const value = Number.parseInt(slider.value);
+          document.getElementById(`${name}Value`).innerHTML = `${value}`;
+          return value;
         });
+        if (grayscale) {
+          rgb = [rgb[0], rgb[0], rgb[0]];
+          elementIdNames.map((name) => {
+            var slider = document.getElementById(`Slider${name}`);
+            slider.value = rgb[0];
+          });
+        }
+        var bgHex = rgb.map((value) => {
+          var hexval = Math.round(value).toString(16);
+          if (hexval.length < 2) {
+            hexval = `0${hexval}`;
+          }
+          return hexval;
+        });
+        var bgColor = new Color(...rgb);
+        var fgColor = getReadableComplement(bgColor, "Luminosity");
+        swatch.style.backgroundColor = `#${bgHex.join("")}`;
+        swatch.style.color = fgColor.toHex();
+        document.getElementById("BGLuminance").innerHTML = bgColor
+          .luminosity()
+          .toFixed(4);
+        document.getElementById("FGLuminance").innerHTML = fgColor
+          .luminosity()
+          .toFixed(4);
+        document.getElementById("BGColor").innerHTML = bgColor.toHex();
+        document.getElementById("FGColor").innerHTML = fgColor.toHex();
+        document.getElementById("LuminanceDiff").innerHTML = Math.abs(
+          fgColor.luminosity() - bgColor.luminosity(),
+        ).toFixed(4);
+      }
 
-        var autoState = document.getElementById("AutoState");
+      elementIdNames.map((name) => {
+        document
+          .getElementById(`Slider${name}`)
+          .addEventListener("input", setColor);
+        document
+          .getElementById(`Sub${name}`)
+          .addEventListener("click", decrementor(name));
+        document
+          .getElementById(`Add${name}`)
+          .addEventListener("click", incrementor(name));
+      });
 
-        window.setInterval(() => {
-            autoState.innerHTML = (auto ? "On" : "Off");
-            if (!auto) {
-                return;
-            }
-            const rgb = [0, 0, 0].map(item => {
-                return Math.round(Math.random() * 255);
-            })
-            var bgHex = rgb.map((value, index) => {
-                var sliderName = `Slider${elementIdNames[index]}`;
-                var slider = document.getElementById(sliderName);
-                slider.value = value;
-                var hexval = Math.round(value).toString(16);
-                if (hexval.length < 2) {
-                    hexval = `0${hexval}`
-                }
-                return hexval;
-            });
-            var complement = getReadableComplement(new Color(...rgb), "Luminosity");
-            swatch.style.backgroundColor = `#${bgHex.join('')}`;
-            swatch.style.color = complement.toHex();
-        }, 1000);
+      let auto = false;
+      var autoButton = document.getElementById("ButtonAuto");
+      autoButton.addEventListener("click", () => {
+        auto = !auto;
+        if (auto) {
+          var linkSliders = document.getElementById("LinkSlidersToggle");
+          linkSliders.checked = false;
+        }
+      });
 
-        var linkSliders = document.getElementById("LinkSlidersToggle");
-        linkSliders.addEventListener('input', event => {
-            grayscale = event.target.checked;
-            setGrayscale(grayscale);
-        })
+      var autoState = document.getElementById("AutoState");
 
-        setColor()
+      window.setInterval(() => {
+        autoState.innerHTML = auto ? "On" : "Off";
+        if (!auto) {
+          return;
+        }
+        const rgb = [0, 0, 0].map((item) => {
+          return Math.round(Math.random() * 255);
+        });
+        var bgHex = rgb.map((value, index) => {
+          var sliderName = `Slider${elementIdNames[index]}`;
+          var slider = document.getElementById(sliderName);
+          slider.value = value;
+          var hexval = Math.round(value).toString(16);
+          if (hexval.length < 2) {
+            hexval = `0${hexval}`;
+          }
+          return hexval;
+        });
+        var complement = getReadableComplement(new Color(...rgb), "Luminosity");
+        swatch.style.backgroundColor = `#${bgHex.join("")}`;
+        swatch.style.color = complement.toHex();
+      }, 1000);
 
+      var linkSliders = document.getElementById("LinkSlidersToggle");
+      linkSliders.addEventListener("input", (event) => {
+        grayscale = event.target.checked;
+        setGrayscale(grayscale);
+      });
+
+      setColor();
     </script>
-</body>
+  </body>
 </html>
