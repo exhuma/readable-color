@@ -1,4 +1,4 @@
-import { getReadableComplement } from "../src/index";
+import { Method, getReadableComplement } from "../src/index";
 import { Color } from "../src/cmath";
 
 const ELEMENT_ID_NAMES = ["Red", "Green", "Blue"];
@@ -6,6 +6,7 @@ let GRAYSCALE = false;
 
 export function initUI(document: Document) {
   var swatch = _findOne("Swatch");
+  let method: Method = "Luminosity";
   window.setInterval(() => {
     autoState.innerHTML = auto ? "On" : "Off";
     if (!auto) {
@@ -24,15 +25,21 @@ export function initUI(document: Document) {
       }
       return hexval;
     });
-    var complement = getReadableComplement(new Color(...rgb), "Luminosity");
+    var complement = getReadableComplement(new Color(...rgb), method);
     swatch.style.backgroundColor = `#${bgHex.join("")}`;
     swatch.style.color = complement.toHex();
   }, 1000);
-  setColor();
+  setColor(method);
   ELEMENT_ID_NAMES.map((name) => {
-    _findOne(`Slider${name}`).addEventListener("input", setColor);
-    _findOne(`Sub${name}`).addEventListener("click", decrementor(name));
-    _findOne(`Add${name}`).addEventListener("click", incrementor(name));
+    _findOne(`Slider${name}`).addEventListener("input", () => setColor(method));
+    _findOne(`Sub${name}`).addEventListener("click", decrementor(name, method));
+    _findOne(`Add${name}`).addEventListener("click", incrementor(name, method));
+  });
+  _findOne("MethodDropDown").addEventListener("change", (evt) => {
+    const elmt = evt.target as HTMLInputElement | null;
+    // @ts-expect-error elmt.value is not detected as "Method" value
+    method = elmt?.value ?? "Luminosity";
+    setColor(method);
   });
 }
 
@@ -57,22 +64,22 @@ function setGrayscale(activeSlider: HTMLInputElement, state: boolean) {
   });
 }
 
-function incrementor(name: string) {
+function incrementor(name: string, method: Method) {
   return () => {
     const slider = _findOne(`Slider${name}`) as HTMLInputElement;
     slider.value = `${Number.parseInt(slider.value) + 1}`;
-    setColor();
+    setColor(method);
   };
 }
-function decrementor(name: string) {
+function decrementor(name: string, method: Method) {
   return () => {
     const slider = document.getElementById(`Slider${name}`) as HTMLInputElement;
     slider.value = `${Number.parseInt(slider.value) - 1}`;
-    setColor();
+    setColor(method);
   };
 }
 
-function setColor() {
+function setColor(method: Method = "Luminosity") {
   var rgb = ELEMENT_ID_NAMES.map((name) => {
     var slider = _findOne(`Slider${name}`) as HTMLInputElement;
     const value = Number.parseInt(slider.value);
@@ -96,7 +103,7 @@ function setColor() {
   });
   const swatch = _findOne("Swatch");
   var bgColor = new Color(...rgb);
-  var fgColor = getReadableComplement(bgColor, "Luminosity");
+  var fgColor = getReadableComplement(bgColor, method);
   swatch.style.backgroundColor = `#${bgHex.join("")}`;
   swatch.style.color = fgColor.toHex();
   _findOne("BGLuminance").innerHTML = bgColor.luminosity().toFixed(4);
