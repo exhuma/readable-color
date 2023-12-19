@@ -17,8 +17,8 @@ export function initUI(document: Document) {
     });
     var bgHex = rgb.map((value, index) => {
       var sliderName = `Slider${ELEMENT_ID_NAMES[index]}`;
-      var slider = _findOne(sliderName);
-      slider.value = value;
+      var slider = _findOne(sliderName) as HTMLInputElement;
+      slider.value = `${value}`;
       var hexval = Math.round(value).toString(16);
       if (hexval.length < 2) {
         hexval = `0${hexval}`;
