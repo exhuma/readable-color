@@ -36,13 +36,9 @@ function test_grc(
   });
 }
 
-test_grc(new Color(10, 20, 30), new Color(223, 188, 155), "W3C");
-test_grc(new Color(200, 200, 200), new Color(255, 255, 255), "W3C");
-test_grc(new Color(10, 20, 30), new Color(220, 182, 147), "Luminosity");
-test_grc(new Color(200, 200, 200), new Color(255, 255, 255), "Luminosity");
-test_grc(new Color(10, 20, 30), new Color(218, 177, 139), "LuminosityContrast");
-test_grc(
-  new Color(200, 200, 200),
-  new Color(255, 255, 255),
-  "LuminosityContrast",
-);
+test_grc(new Color(10, 20, 30), new Color(200, 218, 237), "W3C");
+test_grc(new Color(200, 200, 200), new Color(33, 33, 33), "W3C");
+test_grc(new Color(10, 20, 30), new Color(30, 61, 91), "Luminosity");
+test_grc(new Color(200, 200, 200), new Color(65, 65, 65), "Luminosity");
+test_grc(new Color(10, 20, 30), new Color(200, 218, 237), "LuminosityContrast");
+test_grc(new Color(200, 200, 200), new Color(0, 0, 0), "LuminosityContrast");

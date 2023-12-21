@@ -34,9 +34,17 @@ export function isGoodColorMix(
     case "LuminosityContrast":
       lum_a = color_a.luminosity();
       lum_b = color_b.luminosity();
-      lum_n = 255.0;
-      const delta =
-        116.0 * Math.pow(Math.abs(lum_a - lum_b) / lum_n, 1.0 / 3.0);
+      const diff = Math.abs(lum_a - lum_b);
+
+      let l_star;
+      if (diff <= 0.008856) {
+        l_star = diff * 903.3;
+      } else {
+        l_star = Math.pow(diff, 1 / 3) * 116 - 16;
+      }
+
+      lum_n = 1.0;
+      const delta = 116.0 * Math.pow(diff / lum_n, 1.0 / 3.0);
       return delta > 100.0;
   }
 }
