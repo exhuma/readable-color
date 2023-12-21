@@ -3,7 +3,7 @@ import { Color, getComplement } from "./cmath";
 /**
  * Supported calculation algorithms
  */
-export type Method = "W3C" | "Luminosity" | "LuminosityContrast";
+export type Method = "W3C" | "Luminosity" | "LuminosityContrast" | "WCAG";
 
 /**
  * Determines whether two colors are considered readable if one of them is
@@ -46,6 +46,8 @@ export function isGoodColorMix(
       lum_n = 1.0;
       const delta = 116.0 * Math.pow(diff / lum_n, 1.0 / 3.0);
       return delta > 100.0;
+    case "WCAG":
+      return WCAGLuminosityRatio(color_a, color_b) >= 4.5;
   }
 }
 
@@ -96,6 +98,20 @@ export function W3CColorDifference(a: Color, b: Color): number {
     (Math.max(a.g, b.g) - Math.min(a.g, b.g)) +
     (Math.max(a.b, b.b) - Math.min(a.b, b.b));
   return output;
+}
+
+/**
+ * Calculate the WCAG contrast ratio between two colors
+ *
+ * @param a First color
+ * @param b Second color
+ * @returns The luminosiy ratio
+ */
+export function WCAGLuminosityRatio(a: Color, b: Color): number {
+  const l1 = a.luminosity();
+  const l2 = b.luminosity();
+  const ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+  return ratio;
 }
 
 export { Color };
