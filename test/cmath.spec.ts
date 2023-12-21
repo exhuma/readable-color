@@ -39,25 +39,25 @@ function test_conversions(color: TColor) {
   test(`RGB to HSL: ${color.rgb} -> ${color.hsl}`, () => {
     const result = rgb2hsl(...color.rgb);
     result.map((value, index) =>
-      expect(value / 100).toBeCloseTo(color.hsl[index] / 100, 1)
+      expect(value / 100).toBeCloseTo(color.hsl[index] / 100, 1),
     );
   });
   test(`HSL to RGB: ${color.hsl} -> ${color.rgb}`, () => {
     const result = hsl2rgb(...color.hsl);
     result.map((value, index) =>
-      expect(value / 100).toBeCloseTo(color.rgb[index] / 100, 1)
+      expect(value / 100).toBeCloseTo(color.rgb[index] / 100, 1),
     );
   });
   test(`HSL to RGB to HSL: ${color.hsl} -> ${color.rgb} -> ${color.hsl}`, () => {
     const result = rgb2hsl(...hsl2rgb(...color.hsl)).map((value) => value);
     result.map((value, index) =>
-      expect(value / 100).toBeCloseTo(color.hsl[index] / 100, 1)
+      expect(value / 100).toBeCloseTo(color.hsl[index] / 100, 1),
     );
   });
   test(`RGB to HSL to RGB: ${color.rgb} -> ${color.hsl} -> ${color.rgb}`, () => {
     const result = hsl2rgb(...rgb2hsl(...color.rgb)).map((value) => value);
     result.map((value, index) =>
-      expect(value / 100).toBeCloseTo(color.rgb[index] / 100, 1)
+      expect(value / 100).toBeCloseTo(color.rgb[index] / 100, 1),
     );
   });
   test(`HEX to Color: ${color.hex} -> ${color.rgb}`, () => {
