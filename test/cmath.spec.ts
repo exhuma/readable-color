@@ -64,6 +64,10 @@ function test_conversions(color: TColor) {
     const result = Color.fromHex(color.hex);
     expect(result).toEqual(new Color(...color.rgb));
   });
+  test(`Color to Hex: ${color.rgb} -> ${color.hex}`, () => {
+    const result = new Color(...color.rgb).toHex();
+    expect(result).toEqual(color.hex);
+  });
   test(`HEX to Color to HEX: ${color.hex} -> ${color.rgb} -> ${color.hex}`, () => {
     const result = Color.fromHex(color.hex).toHex();
     expect(result).toEqual(color.hex);
