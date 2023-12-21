@@ -47,6 +47,9 @@ export class Color {
   /**
    * Returns the relative luminosity (luminance) of the given color. The value ranges from 0-255.
    * The weights were taken from http://en.wikipedia.org/wiki/Luminance_(relative)
+   * Another, more authoritative reference mentioning these weights:
+   * https://www.w3.org/WAI/WCAG22/Techniques/general/G18.html and
+   * https://www.w3.org/TR/WCAG22/#dfn-relative-luminance
    *
    * @param color
    * @return
