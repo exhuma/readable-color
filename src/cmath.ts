@@ -14,6 +14,19 @@ export class Color {
     this.g = g;
     this.b = b;
   }
+
+  static fromHex(hexString: string): Color {
+    const noPound = hexString.replace("#", "");
+    const r = noPound.substring(0, 2);
+    const g = noPound.substring(2, 4);
+    const b = noPound.substring(4, 6);
+    return new Color(
+      Math.min(255, Number.parseInt(r, 16)),
+      Math.min(255, Number.parseInt(g, 16)),
+      Math.min(255, Number.parseInt(b, 16)),
+    );
+  }
+
   toHex(): string {
     var fragments = [this.r, this.g, this.b].map((value) => {
       var hexval = Math.round(value).toString(16);

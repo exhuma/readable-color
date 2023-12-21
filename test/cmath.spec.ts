@@ -8,7 +8,7 @@ type TColor = {
 };
 
 const colors: TColor[] = [
-  { hex: "#123456", rgb: [18, 51, 86], hsl: [210, 65.0, 20.4] },
+  { hex: "#123456", rgb: [18, 52, 86], hsl: [210, 65.0, 20.4] },
   { hex: "#000000", rgb: [0, 0, 0], hsl: [0, 0, 0] },
   { hex: "#ffffff", rgb: [255, 255, 255], hsl: [0, 0, 100] },
 ];
@@ -59,6 +59,14 @@ function test_conversions(color: TColor) {
     result.map((value, index) =>
       expect(value / 100).toBeCloseTo(color.rgb[index] / 100, 1)
     );
+  });
+  test(`HEX to Color: ${color.hex} -> ${color.rgb}`, () => {
+    const result = Color.fromHex(color.hex);
+    expect(result).toEqual(new Color(...color.rgb));
+  });
+  test(`HEX to Color to HEX: ${color.hex} -> ${color.rgb} -> ${color.hex}`, () => {
+    const result = Color.fromHex(color.hex).toHex();
+    expect(result).toEqual(color.hex);
   });
 }
 
