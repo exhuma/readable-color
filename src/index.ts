@@ -25,7 +25,7 @@ export function isGoodColorMix(
   switch (method) {
     default:
     case "W3C":
-      return W3CColorDifference(color_a, color_b) >= 500;
+      return W3cColorDifference(color_a, color_b) >= 500;
     case "Luminosity":
       lum_a = color_a.luminosity();
       lum_b = color_b.luminosity();
@@ -47,7 +47,7 @@ export function isGoodColorMix(
       const delta = 116.0 * Math.pow(diff / lum_n, 1.0 / 3.0);
       return delta > 100.0;
     case "WCAG":
-      return WCAGLuminosityRatio(color_a, color_b) >= 4.5;
+      return WcagLuminosityRatio(color_a, color_b) >= 4.5;
   }
 }
 
@@ -71,14 +71,14 @@ export function getReadableComplement(
     modifier = (value: number) => Math.min(100, value * 1.2);
   }
   l = modifier(l);
-  output = Color.fromHSL([h, s, l]);
+  output = Color.fromHsl([h, s, l]);
   // Prevent endless loops for colors where the conditions cannot be met and the
   // contrast will always be below the minimum contrast using a max-number of
   // iterations.
   let iterations = 0;
   while (!isGoodColorMix(color, output, method) && iterations < 50) {
     l = modifier(l);
-    output = Color.fromHSL([h, s, l]);
+    output = Color.fromHsl([h, s, l]);
     iterations += 1;
   }
   return output;
@@ -91,7 +91,7 @@ export function getReadableComplement(
  * @param b Second color
  * @return
  */
-export function W3CColorDifference(a: Color, b: Color): number {
+export function W3cColorDifference(a: Color, b: Color): number {
   let output =
     Math.max(a.r, b.r) -
     Math.min(a.r, b.r) +
@@ -107,7 +107,7 @@ export function W3CColorDifference(a: Color, b: Color): number {
  * @param b Second color
  * @returns The luminosiy ratio
  */
-export function WCAGLuminosityRatio(a: Color, b: Color): number {
+export function WcagLuminosityRatio(a: Color, b: Color): number {
   const l1 = a.luminosity();
   const l2 = b.luminosity();
   const ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);

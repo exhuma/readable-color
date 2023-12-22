@@ -43,7 +43,7 @@ export class Color {
    * @param hsl
    * @return
    */
-  static fromHSL(hsl: [number, number, number]): Color {
+  static fromHsl(hsl: [number, number, number]): Color {
     const rgb = hsl2rgb(hsl[0], hsl[1], hsl[2]);
     return new Color(rgb[0], rgb[1], rgb[2]);
   }
