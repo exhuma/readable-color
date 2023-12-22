@@ -14,7 +14,7 @@ See demo at https://codepen.io/Michel-Albert/pen/eYxrXeG
 Example:
 
 ```javascript
-import { getReadableComplement } from '@exhuma/readable-color';
+import { getReadableComplement } from "@exhuma/readable-color";
 import { Color } from "@exhuma/readable-color/cmath";
 
 // Create a "color" instance from red/green/blue components
