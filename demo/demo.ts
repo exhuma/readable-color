@@ -27,7 +27,7 @@ export function initUI(document: Document) {
     });
     var complement = getReadableComplement(new Color(...rgb), method);
     swatch.style.backgroundColor = `#${bgHex.join("")}`;
-    swatch.style.color = complement.toHex();
+    swatch.style.color = complement.hex;
   }, 1000);
   setColor(method);
   ELEMENT_ID_NAMES.map((name) => {
@@ -105,11 +105,11 @@ function setColor(method: Method = "Luminosity") {
   var bgColor = new Color(...rgb);
   var fgColor = getReadableComplement(bgColor, method);
   swatch.style.backgroundColor = `#${bgHex.join("")}`;
-  swatch.style.color = fgColor.toHex();
+  swatch.style.color = fgColor.hex;
   _findOne("BGLuminance").innerHTML = bgColor.luminosity().toFixed(4);
   _findOne("FGLuminance").innerHTML = fgColor.luminosity().toFixed(4);
-  _findOne("BGColor").innerHTML = bgColor.toHex();
-  _findOne("FGColor").innerHTML = fgColor.toHex();
+  _findOne("BGColor").innerHTML = bgColor.hex;
+  _findOne("FGColor").innerHTML = fgColor.hex;
   _findOne("LuminanceDiff").innerHTML = Math.abs(
     fgColor.luminosity() - bgColor.luminosity(),
   ).toFixed(4);

@@ -65,11 +65,11 @@ function test_conversions(color: TColor) {
     expect(result).toEqual(new Color(...color.rgb));
   });
   test(`Color to Hex: ${color.rgb} -> ${color.hex}`, () => {
-    const result = new Color(...color.rgb).toHex();
+    const result = new Color(...color.rgb).hex;
     expect(result).toEqual(color.hex);
   });
   test(`HEX to Color to HEX: ${color.hex} -> ${color.rgb} -> ${color.hex}`, () => {
-    const result = Color.fromHex(color.hex).toHex();
+    const result = Color.fromHex(color.hex).hex;
     expect(result).toEqual(color.hex);
   });
 }

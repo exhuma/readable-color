@@ -27,7 +27,7 @@ export class Color {
     );
   }
 
-  toHex(): string {
+  get hex(): string {
     var fragments = [this.r, this.g, this.b].map((value) => {
       var hexval = Math.round(value).toString(16);
       if (hexval.length < 2) {
@@ -53,7 +53,7 @@ export class Color {
    * @param color the input color
    * @param hsl the HSL triple
    */
-  hsl() {
+  get hsl() {
     return rgb2hsl(this.r, this.g, this.b);
   }
 

@@ -25,7 +25,7 @@ var complement = getReadableComplement(color);
 
 // Set the text-color to the newly computed color
 const swatch = document.getElementById("my-element");
-swatch.style.color = complement.toHex();
+swatch.style.color = complement.hex;
 ```
 
 ## Development

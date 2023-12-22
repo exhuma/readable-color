@@ -63,7 +63,7 @@ export function getReadableComplement(
 ): Color {
   const backgroundLuminosity = color.luminosity();
   let output = color;
-  let [h, s, l] = color.hsl();
+  let [h, s, l] = color.hsl;
   // lightness must be at least 1 for the multipliers to work in the modifier
   l = Math.max(1, l);
   let modifier = (value: number) => Math.max(0, value * 0.8);
