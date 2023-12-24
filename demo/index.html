@@ -3,25 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Readable Colors</title>
-    <style>
-      #SliderGrid {
-        max-width: 500px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 25px 25px 25px;
-        row-gap: 10px;
-        position: fixed;
-        top: 0px;
-        right: 0px;
-        padding: 10px;
-        border-left: 2px solid black;
-        border-bottom: 2px solid black;
-        color: #000;
-        background-color: #fff;
-      }
-    </style>
+    <title>Readable Colors - SimpleDemo</title>
   </head>
-  <body id="Swatch">
+  <body>
+    <p>
+      This is a demo page for the "readable-color" library. It shows how to use
+      the library in a simple way.
+    </p>
+    <p>
+      For an advanced demo, see the
+      <a href="advanced.html">advanced demo page</a>.
+    </p>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc volutpat
       fringilla purus, in gravida ligula condimentum eu. Interdum et malesuada
@@ -33,100 +25,20 @@
       malesuada posuere vel sit amet metus. Integer in eros id velit consequat
       congue venenatis id neque.
     </p>
-    <p>
-      Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-      ac turpis egestas. Nam eu cursus massa, id facilisis tortor. Phasellus
-      nisl nisi, consectetur in rhoncus nec, malesuada eget justo. Maecenas
-      tempus condimentum mi vitae varius. Aliquam laoreet velit non consectetur
-      porttitor. In condimentum ultrices cursus. Mauris et ultricies massa.
-    </p>
-    <p>
-      Nullam vel egestas ligula, vel semper elit. Vivamus erat nisi, molestie id
-      quam sit amet, mollis pellentesque neque. Pellentesque iaculis, tellus a
-      iaculis posuere, magna neque feugiat tortor, in congue lacus nunc id orci.
-      Sed ut leo ac nisl semper condimentum ut a metus. Aliquam quis lorem nec
-      enim convallis convallis. Cras mollis dui interdum augue ornare semper.
-      Integer id accumsan mi. In vulputate tortor nunc, nec eleifend odio
-      ultricies at. Fusce scelerisque turpis enim, nec condimentum quam
-      tristique a. Nulla egestas justo vel quam ultricies, ac ultricies elit
-      malesuada. Duis vestibulum venenatis orci, congue sodales ex vestibulum
-      ac. Nullam odio enim, iaculis vitae maximus vel, condimentum vel turpis.
-      Vestibulum augue turpis, pulvinar non interdum in, venenatis et odio.
-      Nulla pharetra dapibus metus, nec molestie lorem lobortis a. Duis sagittis
-      iaculis est, vel rhoncus neque maximus id. Quisque auctor neque eu lectus
-      porttitor vestibulum.
-    </p>
-    <p>
-      Phasellus non erat eu justo lacinia vulputate. Duis eu ornare felis.
-      Suspendisse et ex nisi. Proin odio turpis, porta a est ac, tincidunt
-      vestibulum ante. Quisque arcu nisl, condimentum a augue ac, vulputate
-      cursus dolor. Sed vel lacus quis turpis lacinia venenatis. Donec ornare
-      sit amet diam non ultricies. Interdum et malesuada fames ac ante ipsum
-      primis in faucibus. Class aptent taciti sociosqu ad litora torquent per
-      conubia nostra, per inceptos himenaeos. Curabitur porta, sapien ut luctus
-      ultrices, elit risus faucibus nisl, vel vulputate sem libero sed orci.
-      Maecenas ac odio ante.
-    </p>
-    <p>
-      Proin faucibus nisl id metus sagittis tristique. Suspendisse nisi lorem,
-      vestibulum et justo non, pharetra imperdiet est. Cras suscipit, dui in
-      consequat aliquam, erat sapien varius elit, at elementum velit ligula sed
-      sem. In tristique et tortor a viverra. In a justo nulla. Etiam eu massa
-      blandit, vehicula dolor quis, tincidunt mi. Donec placerat pellentesque
-      dui efficitur commodo. Nunc porta justo metus, a dignissim neque maximus
-      eget.
-    </p>
-    <div id="SliderGrid">
-      <span>Method</span
-      ><select id="MethodDropDown" style="grid-column-start: span 4">
-        <option selected value="W3C">W3C</option>
-        <option value="Luminosity">Luminosity</option>
-        <option value="LuminosityContrast">LuminosityContrast</option>
-        <option value="WCAG">WCAG</option>
-      </select>
-      <span>Background Color</span
-      ><tt id="BGColor" style="grid-column-start: span 4">-</tt>
-      <span>Text Color</span
-      ><tt id="FGColor" style="grid-column-start: span 4">-</tt> <span>Red</span
-      ><input type="range" name="red" id="SliderRed" min="0" max="255" />
-      <button id="SubRed">-</button>
-      <button id="AddRed">+</button>
-      <span id="RedValue"></span>
-      <span>Green</span
-      ><input type="range" name="green" id="SliderGreen" min="0" max="255" />
-      <button id="SubGreen">-</button>
-      <button id="AddGreen">+</button>
-      <span id="GreenValue"></span>
-      <span>Blue</span
-      ><input type="range" name="blue" id="SliderBlue" min="0" max="255" />
-      <button id="SubBlue">-</button>
-      <button id="AddBlue">+</button>
-      <span id="BlueValue"></span>
-      <span>BG Luminance</span
-      ><span id="BGLuminance" style="grid-column-start: span 4">-</span>
-      <span>FG Luminance</span
-      ><span id="FGLuminance" style="grid-column-start: span 4">-</span>
-      <span>Luminance Diff</span
-      ><span id="LuminanceDiff" style="grid-column-start: span 4">-</span>
-      <span>Auto: <span id="AutoState">Off</span></span
-      ><input
-        style="grid-column-start: span 4"
-        type="button"
-        id="ButtonAuto"
-        value="Toggle Auto"
-      />
-      <span>Grayscale</span
-      ><input
-        style="grid-column-start: span 4"
-        type="checkbox"
-        id="LinkSlidersToggle"
-        value="off"
-      />
-      <span></span><span></span><span></span>
-    </div>
+    <input type="text" id="bgColor" value="#ffffff" />
+    <input type="button" id="setColor" value="Set background color" />
+    Foreground-Color: <span id="colorResult"><em>no yet set</em></span>
     <script type="module">
-      import { initUI } from "./demo.ts";
-      initUI(document);
+      import { getReadableColor } from "../src";
+      document.getElementById("setColor").addEventListener("click", () => {
+        document.body.style.backgroundColor =
+          document.getElementById("bgColor").value;
+        const result = getReadableColor(
+          document.getElementById("bgColor").value,
+        );
+        document.getElementById("colorResult").textContent = result;
+        document.body.style.color = result;
+      });
     </script>
   </body>
 </html>

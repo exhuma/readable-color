@@ -35,7 +35,7 @@ function setRandomColor(method: string, bgElement: HTMLElement) {
   bgElement.style.color = complement;
 }
 
-export function initUI(document: Document) {
+export function initUI() {
   var swatch = _findOne("Swatch");
   let method = "Luminosity";
   window.setInterval(() => setRandomColor(method, swatch), 1000);
