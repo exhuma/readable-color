@@ -16,24 +16,23 @@ function rgbToHex(rgb: [number, number, number]): string {
     .join("");
 }
 
-function setRandomColor(method: string, swatch: HTMLElement) {
+function setRandomColor(method: string, bgElement: HTMLElement) {
   autoState.innerHTML = auto ? "On" : "Off";
   if (!auto) {
     return;
   }
-  const rgb = [0, 0, 0].map((item) => {
+  const rgb = [0, 0, 0].map(() => {
     return Math.round(Math.random() * 255);
   }) as [number, number, number];
-  var bgHex = rgb.map((value, index) => {
+  var bgHex = rgbToHex(rgb);
+  rgb.map((value, index) => {
     var sliderName = `Slider${ELEMENT_ID_NAMES[index]}`;
     var slider = _findOne(sliderName) as HTMLInputElement;
     slider.value = `${value}`;
-    var hexval = rgbToHex(rgb);
-    return hexval;
   });
   var complement = getReadableColor(rgbToHex(rgb), method as Method);
-  swatch.style.backgroundColor = `#${bgHex.join("")}`;
-  swatch.style.color = complement;
+  bgElement.style.backgroundColor = `#${bgHex}`;
+  bgElement.style.color = complement;
 }
 
 export function initUI(document: Document) {
