@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Readable Colors - SimpleDemo</title>
+  </head>
+  <body>
+    <p>
+      This is a demo page for the "readable-color" library. It shows how to use
+      the library in a simple way.
+    </p>
+    <p>
+      For an advanced demo, see the
+      <a href="advanced.html">advanced demo page</a>.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc volutpat
+      fringilla purus, in gravida ligula condimentum eu. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Integer maximus massa ante, quis
+      rutrum nisi egestas eu. Fusce quis sapien et lorem molestie finibus. Ut
+      bibendum molestie pharetra. Sed quis dolor id libero eleifend ullamcorper.
+      Morbi sed elit justo. Aliquam a aliquet turpis. Duis mollis tellus est,
+      vel tincidunt lorem hendrerit ultricies. Quisque tempus est vitae odio
+      malesuada posuere vel sit amet metus. Integer in eros id velit consequat
+      congue venenatis id neque.
+    </p>
+    <input type="text" id="bgColor" value="#ffffff" />
+    <input type="button" id="setColor" value="Set background color" />
+    Foreground-Color: <span id="colorResult"><em>no yet set</em></span>
+    <script type="module">
+      import { getReadableColor } from "../src";
+      document.getElementById("setColor").addEventListener("click", () => {
+        document.body.style.backgroundColor =
+          document.getElementById("bgColor").value;
+        const result = getReadableColor(
+          document.getElementById("bgColor").value,
+        );
+        document.getElementById("colorResult").textContent = result;
+        document.body.style.color = result;
+      });
+    </script>
+  </body>
+</html>
