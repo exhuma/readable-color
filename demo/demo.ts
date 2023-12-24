@@ -1,34 +1,45 @@
-import { Method, getReadableComplement } from "../src/index";
+import { Method, getReadableColor } from "../src";
 import { Color } from "../src/cmath";
 
 const ELEMENT_ID_NAMES = ["Red", "Green", "Blue"];
 let GRAYSCALE = false;
 
-export function initUI(document: Document) {
-  var swatch = _findOne("Swatch");
-  let method: Method = "Luminosity";
-  window.setInterval(() => {
-    autoState.innerHTML = auto ? "On" : "Off";
-    if (!auto) {
-      return;
-    }
-    const rgb = [0, 0, 0].map((item) => {
-      return Math.round(Math.random() * 255);
-    });
-    var bgHex = rgb.map((value, index) => {
-      var sliderName = `Slider${ELEMENT_ID_NAMES[index]}`;
-      var slider = _findOne(sliderName) as HTMLInputElement;
-      slider.value = `${value}`;
+function rgbToHex(rgb: [number, number, number]): string {
+  return rgb
+    .map((value) => {
       var hexval = Math.round(value).toString(16);
       if (hexval.length < 2) {
         hexval = `0${hexval}`;
       }
       return hexval;
-    });
-    var complement = getReadableComplement(new Color(...rgb), method);
-    swatch.style.backgroundColor = `#${bgHex.join("")}`;
-    swatch.style.color = complement.hex;
-  }, 1000);
+    })
+    .join("");
+}
+
+function setRandomColor(method: string, swatch: HTMLElement) {
+  autoState.innerHTML = auto ? "On" : "Off";
+  if (!auto) {
+    return;
+  }
+  const rgb = [0, 0, 0].map((item) => {
+    return Math.round(Math.random() * 255);
+  }) as [number, number, number];
+  var bgHex = rgb.map((value, index) => {
+    var sliderName = `Slider${ELEMENT_ID_NAMES[index]}`;
+    var slider = _findOne(sliderName) as HTMLInputElement;
+    slider.value = `${value}`;
+    var hexval = rgbToHex(rgb);
+    return hexval;
+  });
+  var complement = getReadableColor(rgbToHex(rgb), method as Method);
+  swatch.style.backgroundColor = `#${bgHex.join("")}`;
+  swatch.style.color = complement;
+}
+
+export function initUI(document: Document) {
+  var swatch = _findOne("Swatch");
+  let method = "Luminosity";
+  window.setInterval(() => setRandomColor(method, swatch), 1000);
   setColor(method);
   ELEMENT_ID_NAMES.map((name) => {
     _findOne(`Slider${name}`).addEventListener("input", () => setColor(method));
@@ -37,7 +48,6 @@ export function initUI(document: Document) {
   });
   _findOne("MethodDropDown").addEventListener("change", (evt) => {
     const elmt = evt.target as HTMLInputElement | null;
-    // @ts-expect-error elmt.value is not detected as "Method" value
     method = elmt?.value ?? "Luminosity";
     setColor(method);
   });
@@ -64,14 +74,14 @@ function setGrayscale(activeSlider: HTMLInputElement, state: boolean) {
   });
 }
 
-function incrementor(name: string, method: Method) {
+function incrementor(name: string, method: string) {
   return () => {
     const slider = _findOne(`Slider${name}`) as HTMLInputElement;
     slider.value = `${Number.parseInt(slider.value) + 1}`;
     setColor(method);
   };
 }
-function decrementor(name: string, method: Method) {
+function decrementor(name: string, method: string) {
   return () => {
     const slider = document.getElementById(`Slider${name}`) as HTMLInputElement;
     slider.value = `${Number.parseInt(slider.value) - 1}`;
@@ -79,7 +89,7 @@ function decrementor(name: string, method: Method) {
   };
 }
 
-function setColor(method: Method = "Luminosity") {
+function setColor(method: string = "Luminosity") {
   var rgb = ELEMENT_ID_NAMES.map((name) => {
     var slider = _findOne(`Slider${name}`) as HTMLInputElement;
     const value = Number.parseInt(slider.value);
@@ -103,7 +113,7 @@ function setColor(method: Method = "Luminosity") {
   });
   const swatch = _findOne("Swatch");
   var bgColor = new Color(...rgb);
-  var fgColor = getReadableComplement(bgColor, method);
+  var fgColor = getReadableColor(bgColor, method as Method);
   swatch.style.backgroundColor = `#${bgHex.join("")}`;
   swatch.style.color = fgColor.hex;
   _findOne("BGLuminance").innerHTML = bgColor.luminosity().toFixed(4);

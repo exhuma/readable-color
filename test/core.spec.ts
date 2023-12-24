@@ -1,6 +1,6 @@
-import { assert, expect, test } from "vitest";
+import { expect, test } from "vitest";
+import { isGoodColorMix, getReadableColor, Method } from "../src/core";
 import { Color } from "../src/cmath";
-import { isGoodColorMix, getReadableComplement, Method } from "../src/core";
 
 test("isGoodColorMix", () => {
   const color1 = new Color(0, 0, 0);
@@ -31,8 +31,8 @@ function test_grc(
   expected: Color,
   method: Method = "LuminosityContrast",
 ) {
-  test(`getReadableComplement: ${method}`, () => {
-    expect(getReadableComplement(input, method)).toEqual(expected);
+  test(`getReadableColor: ${method}`, () => {
+    expect(getReadableColor(input, method)).toEqual(expected);
   });
 }
 

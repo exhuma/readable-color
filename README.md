@@ -14,14 +14,14 @@ See demo at https://codepen.io/Michel-Albert/pen/eYxrXeG
 Example:
 
 ```javascript
-import { getReadableComplement } from "@exhuma/readable-color";
+import { getReadableColor } from "@exhuma/readable-color";
 import { Color } from "@exhuma/readable-color/cmath";
 
 // Create a "color" instance from red/green/blue components
 var color = new Color(r, g, b);
 
 // Determine the "readable" color
-var complement = getReadableComplement(color);
+var complement = getReadableColor(color);
 
 // Set the text-color to the newly computed color
 const swatch = document.getElementById("my-element");

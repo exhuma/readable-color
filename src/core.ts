@@ -6,6 +6,13 @@ import { Color } from "./cmath";
 export type Method = "W3C" | "Luminosity" | "LuminosityContrast" | "WCAG";
 
 /**
+ * A type-guard to check if a value is a string
+ */
+function _isString(value: any): value is string {
+  return typeof value === "string";
+}
+
+/**
  * Determines whether two colors are considered readable if one of them is
  * the background, the other the foreground.
  *
@@ -57,13 +64,20 @@ export function isGoodColorMix(
  * @param color A color
  * @return the "best" complementary color
  */
-export function getReadableComplement(
-  color: Color,
+export function getReadableColor<T extends string | Color>(
+  color: T,
   method: Method = "LuminosityContrast",
-): Color {
-  const backgroundLuminosity = color.luminosity();
-  let output = color;
-  let [h, s, l] = color.hsl;
+): T {
+  let typedColor: Color;
+  if (_isString(color)) {
+    typedColor = Color.fromHex(color);
+  } else {
+    typedColor = color;
+  }
+
+  const backgroundLuminosity = typedColor.luminosity();
+  let output = typedColor;
+  let [h, s, l] = typedColor.hsl;
   // lightness must be at least 1 for the multipliers to work in the modifier
   l = Math.max(1, l);
   let modifier = (value: number) => Math.max(0, value * 0.8);
@@ -76,12 +90,15 @@ export function getReadableComplement(
   // contrast will always be below the minimum contrast using a max-number of
   // iterations.
   let iterations = 0;
-  while (!isGoodColorMix(color, output, method) && iterations < 50) {
+  while (!isGoodColorMix(typedColor, output, method) && iterations < 50) {
     l = modifier(l);
     output = Color.fromHsl([h, s, l]);
     iterations += 1;
   }
-  return output;
+  if (_isString(color)) {
+    return output.hex as T;
+  }
+  return output as T;
 }
 
 /**

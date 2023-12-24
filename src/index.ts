@@ -1,4 +1,4 @@
-import { Color, getComplement } from "./cmath";
-import { Method } from "./core";
+import { getReadableColor } from "./core";
+import { type Method } from "./core";
 
-export { Color, getComplement, Method };
+export { getReadableColor, Method };
