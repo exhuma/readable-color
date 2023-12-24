@@ -66,7 +66,7 @@ export function isGoodColorMix(
  */
 export function getReadableColor<T extends string | Color>(
   color: T,
-  method: Method = "LuminosityContrast",
+  method: Method = "W3C",
 ): T {
   let typedColor: Color;
   if (_isString(color)) {

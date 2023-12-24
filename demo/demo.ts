@@ -37,7 +37,7 @@ function setRandomColor(method: string, bgElement: HTMLElement) {
 
 export function initUI() {
   var swatch = _findOne("Swatch");
-  let method = "Luminosity";
+  let method = "W3C";
   window.setInterval(() => setRandomColor(method, swatch), 1000);
   setColor(method);
   ELEMENT_ID_NAMES.map((name) => {
