@@ -123,6 +123,7 @@ function W3cColorDifference(a: Color, b: Color): number {
  * @param a First color
  * @param b Second color
  * @returns The luminosiy ratio
+ * @see https://www.w3.org/WAI/WCAG22/Techniques/general/G18.html
  */
 function WcagLuminosityRatio(a: Color, b: Color): number {
   const l1 = a.luminosity();
