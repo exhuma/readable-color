@@ -1,6 +1,6 @@
 import { assert, expect, test } from "vitest";
 import { Color } from "../src/cmath";
-import { isGoodColorMix, getReadableComplement, Method } from "../src";
+import { isGoodColorMix, getReadableComplement, Method } from "../src/core";
 
 test("isGoodColorMix", () => {
   const color1 = new Color(0, 0, 0);
