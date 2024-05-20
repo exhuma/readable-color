@@ -1,3 +1,8 @@
+# 1.0.0
+
+- Add missing type-declarations
+- Fix missing export to make it easily importable
+
 # 1.0.0-beta.2
 
 - Readme updated. Fixes #2.

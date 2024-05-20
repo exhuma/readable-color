@@ -4,7 +4,7 @@
   "files": [
     "dist"
   ],
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0",
   "description": "Determine readable text-colors for a given backgrund",
   "main": "dist/readable-color.js",
   "types": "dist/readable-color.d.ts",
